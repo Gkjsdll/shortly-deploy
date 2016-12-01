@@ -15,8 +15,6 @@ userSchema.methods.comparePassword = function(attemptedPassword, callback) {
   bcrypt.compare(attemptedPassword, this.get('password'), function(err, isMatch) {
     if (err) {
       console.error(err);
-    } else {
-      console.log('no err');
     }
     callback(isMatch);
   });

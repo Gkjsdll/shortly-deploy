@@ -1,7 +1,9 @@
 var mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');
 
-mongoose.connect('mongodb://localhost/shortly');
+var mongoAddress = process.env.DB_PORT_27017_TCP_ADDR || 'localhost';
+
+mongoose.connect(`mongodb://${mongoAddress}/shortly`);
 
 var db = mongoose.connection;
 db.on('error', console.error.bind(console, 'connection error:'));
